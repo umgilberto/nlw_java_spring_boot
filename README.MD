@@ -48,3 +48,9 @@ $ mvn -version
     - **vscjava.vscode-spring-initializr**
     - **vmware.vscode-spring-boot**
     - **vscjava.vscode-spring-boot-dashboard**
+
+
+### Run Project
+```sh
+$ mvn spring-boot:run
+```
