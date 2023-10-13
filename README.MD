@@ -1,4 +1,4 @@
-### Instalar java no ubuntu
+### Installing java on ubuntu
 
 1 - Open terminal (CTRL + ALT + T)
 
