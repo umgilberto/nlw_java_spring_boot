@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.nlwjavaspringboot.tudolist.user.IUserRepository;
 import br.com.nlwjavaspringboot.tudolist.utils.Utils;
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -60,6 +59,9 @@ public class TaskController {
 
         if (task == null)
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Task not found");
+
+        if (!task.getUserId().equals(userId))
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User does not have permission to edit this task");
 
         taskModel.setUserId((UUID) userId);
         Utils.copyNonNullProperties(taskModel, task);

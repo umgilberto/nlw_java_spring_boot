@@ -11,16 +11,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-
 @Data
-@Entity(name="tb_task")
+@Entity(name = "tb_task")
 public class TaskModel {
-    
+
     @Id
     @GeneratedValue(generator = "UUID   ")
     private UUID id;
     private UUID userId;
-    
+
     @Column(length = 50)
     private String title;
     private String description;
@@ -30,4 +29,11 @@ public class TaskModel {
 
     @CreationTimestamp
     private LocalDateTime createdAt;
+
+    public void setTitle(String title) throws Exception {
+        if (title.length() > 50)
+            throw new Exception("The title field must have a maximum of 50 characters");
+
+        this.title = title;
+    }
 }
